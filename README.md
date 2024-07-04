@@ -9,9 +9,22 @@ First, run the development server:
 docker compose up -d
 # or
 ```
+2. Rename `.env.exmaple` to `.env`
+3. Replace environment variables
 
-2. Run the server
+4. Prisma commands
+```bash
+
+ npx prisma init
+ npx prisma migrate dev
+ npx prisma generate
+
+```
+
+* . Run the server
 ```bash
 npm run dev
 # or
 ```
+
+
