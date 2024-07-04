@@ -11,6 +11,7 @@ docker compose up -d
 ```
 2. Rename `.env.exmaple` to `.env`
 3. Replace environment variables
+4. Execute seed for [populating the local datase](http://localhost:3000/api/seed)
 
 4. Prisma commands
 ```bash
