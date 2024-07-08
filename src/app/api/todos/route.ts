@@ -1,6 +1,13 @@
 import prisma from "@/lib/prisma";
+import { Segment } from "next/dist/server/app-render/types";
 import { NextResponse, NextRequest } from "next/server";
 import * as yup from "yup";
+
+interface Segments {
+  params: {
+    id: string;
+  };
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -50,4 +57,22 @@ export async function POST(req: Request) {
   } catch (error) {
     return NextResponse.json(error, { status: 400 });
   }
+}
+
+
+export async function PUT(req: Request, { params }: Segments) {
+  const { id } = params;
+  const todo = await prisma.todo.findFirst({ where: { id } });
+  if (!todo) {
+    return NextResponse.json({ error: "Todo not found" }, { status: 404 });
+  }
+
+  const body = await req.json();
+
+  const updatedTodo = await prisma.todo.update({
+    where: { id },
+    data: { ...body },
+  });
+
+  return NextResponse.json({ updatedTodo });
 }
