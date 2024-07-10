@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { TodosGrid } from "@/todos";
 
 export const metadata = {
   title: "Rest todos",
@@ -12,10 +13,12 @@ export default async function RestTodosPage() {
     },
   });
 
+  //?INFO: useState and useEffect force client side rendering
+
   return (
     <div>
       <h1>Hello Rest todos</h1>
-      <p>{JSON.stringify(todos)}</p>
+      <TodosGrid todos={todos} />
     </div>
   );
 }
