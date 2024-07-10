@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { CiBookmarkCheck, CiLogout } from "react-icons/ci";
+import { CiBookmarkCheck, CiLogout, CiViewList } from "react-icons/ci";
 import SidebarItem from "./SidebarItem";
 
 const menuItems = [
@@ -13,7 +13,12 @@ const menuItems = [
   {
     path: "/dashboard/rest-todos",
     icon: <CiBookmarkCheck size={30} />,
-    title: "Categories",
+    title: "Rest TODOS",
+  },
+  {
+    path: "/dashboard/server-actions",
+    icon: <CiViewList size={30} />,
+    title: "Server actions",
   },
 ];
 
@@ -49,12 +54,7 @@ export const Sidebar = () => {
 
         <ul className="space-y-2 tracking-wide mt-8">
           {menuItems.map((item) => (
-            <SidebarItem
-              key={item.path}
-              path={item.path}
-              icon={item.icon}
-              title={item.title}
-            />
+            <SidebarItem key={item.path} {...item} />
           ))}
         </ul>
       </div>
