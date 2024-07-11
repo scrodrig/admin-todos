@@ -1,6 +1,10 @@
 import { Todo } from '@prisma/client'
 
+const sleep = (ms: number): Promise<Boolean> =>
+  new Promise((resolve) => setTimeout(resolve, ms * 1000))
+
 export const updateTodo = async (id: string, completed: boolean): Promise<Todo> => {
+  // await sleep(2)
   const body = {
     completed: completed,
   }
