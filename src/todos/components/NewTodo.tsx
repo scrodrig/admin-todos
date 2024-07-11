@@ -2,14 +2,20 @@
 
 import { FormEvent, useState } from 'react'
 import { IoTrashOutline } from 'react-icons/io5'
+import * as apiTodos from '@/todos/helper/todos'
+import { useRouter } from 'next/navigation'
 
 export const NewTodo = () => {
   const [description, setDescription] = useState('')
+  const router = useRouter()
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (description.trim().length === 0) return
-    console.log('submit')
+    const newTodo = await apiTodos.createTodo(description)
+    setDescription('')
+    router.refresh()
+    return newTodo
   }
 
   return (
