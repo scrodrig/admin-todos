@@ -4,7 +4,7 @@ import { FormEvent, useState } from 'react'
 import { IoTrashOutline } from 'react-icons/io5'
 import * as apiTodos from '@/todos/helper/todos'
 import { useRouter } from 'next/navigation'
-import { addTodo } from '../actions/todo-actions'
+import { addTodo, deleteCompletedTodos } from '../actions/todo-actions'
 
 export const NewTodo = () => {
   const router = useRouter()
@@ -19,9 +19,9 @@ export const NewTodo = () => {
     // return newTodo
   }
 
-  const deleteCompletedTodos = async () => {
-    // await apiTodos.deleteCompletedTodos()
-    // router.refresh()
+  const onDeleteCompletedTodos = async () => {
+    await apiTodos.deleteCompletedTodos()
+    router.refresh()
   }
 
   return (
