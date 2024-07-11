@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import prisma from '@/lib/prisma'
 import { NewTodo, TodosGrid } from '@/todos'
 
@@ -12,6 +15,8 @@ export default async function ServerTodosPage() {
       description: 'asc',
     },
   })
+
+  console.log('contructed')
 
   //?INFO: useState and useEffect force client side rendering
 
