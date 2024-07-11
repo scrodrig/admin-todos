@@ -16,7 +16,7 @@ const menuItems = [
     title: "Rest TODOS",
   },
   {
-    path: "/dashboard/server-actions",
+    path: "/dashboard/server-todos",
     icon: <CiViewList size={30} />,
     title: "Server actions",
   },
