@@ -41,7 +41,7 @@ export const NewTodo = () => {
         type="button"
         className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all">
         <IoTrashOutline />
-        Delete
+        <span className='ml-2'>Delete completed</span>
       </button>
     </form>
   )
