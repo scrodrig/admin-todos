@@ -37,3 +37,13 @@ export const addTodo = async (description: string): Promise<Todo | { message: st
     }
   }
 }
+
+export const deleteCompletedTodos = async (): Promise<void> => {
+  await prisma.todo.deleteMany({
+    where: {
+      completed: true,
+    },
+  })
+
+  revalidatePath('/dashboard/server-todos')
+}
