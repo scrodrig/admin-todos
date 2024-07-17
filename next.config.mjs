@@ -3,11 +3,16 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "tailus.io",
-        protocol: "https",
+        hostname: 'tailus.io',
+        protocol: 'https',
       },
     ],
   },
-};
+  experimental: {
+    staleTimes: {
+      dynamic: 0,
+    },
+  },
+}
 
-export default nextConfig;
+export default nextConfig
