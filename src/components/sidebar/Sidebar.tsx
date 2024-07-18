@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { CiBookmarkCheck, CiLogout, CiViewList } from "react-icons/ci";
+import { CiBookmarkCheck, CiLogout, CiShoppingBasket, CiViewList } from "react-icons/ci";
 import SidebarItem from "./SidebarItem";
 
 const menuItems = [
@@ -24,6 +24,11 @@ const menuItems = [
     path: "/dashboard/cookies",
     icon: <CiViewList size={30} />,
     title: "Cookies",
+  },
+  {
+    path: "/dashboard/products",
+    icon: <CiShoppingBasket size={30} />,
+    title: "Products",
   },
 ];
 
