@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'	
 
 services:
   todosDB:
@@ -11,4 +11,4 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - ./store/postgres:/var/lib/postgresql/data
