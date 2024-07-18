@@ -20,6 +20,11 @@ const menuItems = [
     icon: <CiViewList size={30} />,
     title: "Server actions",
   },
+  {
+    path: "/dashboard/cookies",
+    icon: <CiViewList size={30} />,
+    title: "Cookies",
+  },
 ];
 
 export const Sidebar = () => {
