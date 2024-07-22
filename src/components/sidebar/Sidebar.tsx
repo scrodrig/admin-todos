@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { CiBookmarkCheck, CiLogout, CiShoppingBasket, CiViewList } from "react-icons/ci";
+import { CiBookmarkCheck, CiLogout, CiShoppingBasket, CiUser, CiViewList } from "react-icons/ci";
 import SidebarItem from "./SidebarItem";
 import { Avatar } from "../avatar/Avatar";
 
@@ -30,6 +30,12 @@ const menuItems = [
     path: "/dashboard/products",
     icon: <CiShoppingBasket size={30} />,
     title: "Products",
+  },
+
+  {
+    path: "/dashboard/profile",
+    icon: <CiUser size={30} />,
+    title: "Profile",
   },
 ];
 
