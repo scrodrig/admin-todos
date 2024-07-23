@@ -1,9 +1,11 @@
 import { WidgetItem } from '@/components'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
+import { authOptions } from '../api/auth/[...nextauth]/route'
 
 export default async function DashboardPage() {
-  const session = await getServerSession()
+  const session = await getServerSession(authOptions)
+  console.log({ session })
 
   if (!session) {
     redirect('/api/auth/signin')
@@ -17,7 +19,7 @@ export default async function DashboardPage() {
           <span className="text-lg">{session.user?.email}</span>
           <span className="font-thin">{session.user?.image}</span>
         </div>
-        <div className="flex flex-col">{JSON.stringify(session, null, 2)}</div>
+        <div className="flex flex-col">{JSON.stringify(session)}</div>
       </WidgetItem>
     </div>
   )
