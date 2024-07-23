@@ -4,6 +4,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import { Adapter } from 'next-auth/adapters'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
+import async from '../../../dashboard/page'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -21,6 +22,36 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: 'jwt',
+  },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      // console.log({user});
+      return true
+    },
+
+    async jwt({ token, user, account, profile }) {
+      // console.log({ token });
+      const dbUser = await prisma.user.findUnique({ where: { email: token.email ?? 'no-email' } })
+      if (dbUser?.isActive === false) {
+        throw Error('user not active')
+      }
+
+      token.roles = dbUser?.roles ?? ['no-roles']
+      token.id = dbUser?.id ?? 'no-uuid'
+
+      return token
+    },
+
+    async session({ session, token, user }) {
+      if (session && session.user) {
+        session.user.roles = token.roles
+        session.user.id = token.id
+      }
+
+      console.log({ session })
+
+      return session
+    },
   },
 }
 // export default NextAuth(authOptions)
