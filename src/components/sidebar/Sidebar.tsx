@@ -1,46 +1,47 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { CiBookmarkCheck, CiLogout, CiShoppingBasket, CiUser, CiViewList } from "react-icons/ci";
-import SidebarItem from "./SidebarItem";
-import { Avatar } from "../avatar/Avatar";
-import { LogoutButton } from "./LogoutButton";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { CiBookmarkCheck, CiLogout, CiShoppingBasket, CiUser, CiViewList } from 'react-icons/ci'
+import SidebarItem from './SidebarItem'
+import { Avatar } from '../avatar/Avatar'
+import { LogoutButton } from './LogoutButton'
+import async from '../../app/dashboard/page'
 
 const menuItems = [
   {
-    path: "/dashboard",
+    path: '/dashboard',
     icon: <CiBookmarkCheck size={30} />,
-    title: "Dashboard",
+    title: 'Dashboard',
   },
   {
-    path: "/dashboard/rest-todos",
+    path: '/dashboard/rest-todos',
     icon: <CiBookmarkCheck size={30} />,
-    title: "Rest TODOS",
+    title: 'Rest TODOS',
   },
   {
-    path: "/dashboard/server-todos",
+    path: '/dashboard/server-todos',
     icon: <CiViewList size={30} />,
-    title: "Server actions",
+    title: 'Server actions',
   },
   {
-    path: "/dashboard/cookies",
+    path: '/dashboard/cookies',
     icon: <CiViewList size={30} />,
-    title: "Cookies",
+    title: 'Cookies',
   },
   {
-    path: "/dashboard/products",
+    path: '/dashboard/products',
     icon: <CiShoppingBasket size={30} />,
-    title: "Products",
+    title: 'Products',
   },
 
   {
-    path: "/dashboard/profile",
+    path: '/dashboard/profile',
     icon: <CiUser size={30} />,
-    title: "Profile",
+    title: 'Profile',
   },
-];
+]
 
-export const Sidebar = () => {
+export const Sidebar = async () => {
   return (
     <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
       <div>
@@ -69,5 +70,5 @@ export const Sidebar = () => {
         <LogoutButton />
       </div>
     </aside>
-  );
-};
+  )
+}
