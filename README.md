@@ -26,4 +26,8 @@ npm run dev
 # or
 ```
 
+> [!IMPORTANT]  
+> User: test1@usermail.com
+> Password: 123456
+
 
