@@ -13,6 +13,8 @@ model Todo {
   completed   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
 }
 
 model Account {
@@ -54,6 +56,7 @@ model User {
   isActive      Boolean   @default(true)
   accounts      Account[]
   sessions      Session[]
+  todos         Todo[]
 }
 
 model VerificationRequest {
