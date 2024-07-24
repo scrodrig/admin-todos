@@ -19,8 +19,14 @@ export const updateTodo = async (id: string, completed: boolean): Promise<Todo> 
   return todo
 }
 
-export const createTodo = async (description: string): Promise<Todo> => {
+interface UpdateTodo {
+  title: string
+  description: string
+}
+
+export const createTodo = async ({ title, description }: UpdateTodo): Promise<Todo> => {
   const body = {
+    title: title,
     description,
   }
 
