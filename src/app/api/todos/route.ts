@@ -1,7 +1,8 @@
+import * as yup from 'yup'
+
+import { NextResponse } from 'next/server'
 import { getUserServerSession } from '@/auth/actions/auth-actions'
 import prisma from '@/lib/prisma'
-import { NextResponse } from 'next/server'
-import * as yup from 'yup'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -27,6 +28,7 @@ export async function GET(request: Request) {
 const postSchema = yup.object({
   title: yup.string().required().default('No title'),
   description: yup.string().required(),
+  date: yup.string().required(),
   completed: yup.boolean().optional().default(false),
 })
 
@@ -37,11 +39,11 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { title, description, completed } = await postSchema.validate(await req.json())
+    const { title, description, date, completed } = await postSchema.validate(await req.json())
 
     const todo = await prisma.todo.create({
       data: {
-        ...{ title, description, completed, userId: user.id },
+        ...{ title, description, date, completed, userId: user.id },
       },
     })
 
