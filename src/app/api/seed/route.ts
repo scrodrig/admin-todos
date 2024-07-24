@@ -14,12 +14,12 @@ export async function GET(request: Request) {
       roles: ['admin', 'user'],
       todos: {
         create: [
-          { description: 'Space stone', completed: true },
-          { description: 'Mind stone' },
-          { description: 'Reality stone' },
-          { description: 'Power stone' },
-          { description: 'Time stone' },
-          { description: 'Soul stone' },
+          { title: '1 stone', description: 'Space stone', completed: true },
+          { title: '2 stone', description: 'Mind stone' },
+          { title: '3 stone', description: 'Reality stone' },
+          { title: '4 stone', description: 'Power stone' },
+          { title: '5 stone', description: 'Time stone' },
+          { title: '6 stone', description: 'Soul stone' },
         ],
       },
     },
