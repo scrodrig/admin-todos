@@ -1,5 +1,6 @@
 'use server'
 
+import { getUserServerSession } from '@/auth/actions/auth-actions'
 import prisma from '@/lib/prisma'
 import { Todo } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
@@ -23,11 +24,15 @@ export const toggleTodo = async (id: string, completed: boolean): Promise<Todo> 
   return updatedTodo
 }
 
-export const addTodo = async (description: string): Promise<Todo | { message: string }> => {
+export const addTodo = async (description: string, id:string): Promise<Todo | { message: string }> => {
+  const user = await getUserServerSession()
+  if (!user) {
+    throw new Error('Unauthorized')
+  }
   try {
     const todo = await prisma.todo.create({
       data: {
-        ...{ description },
+        ...{ description, userId: user.id },
       },
     })
 
