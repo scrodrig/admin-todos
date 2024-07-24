@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Todo" ADD COLUMN     "date" TEXT NOT NULL DEFAULT '2024-07-25';
