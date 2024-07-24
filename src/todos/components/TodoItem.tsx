@@ -40,12 +40,15 @@ export const TodoItem = ({ todo, toggleTodo }: TodoItemProps) => {
             todoOptimistic.completed ? 'bg-blue-100' : 'bg-red-100'
           }`}>
           {todoOptimistic.completed ? (
-            <IoCheckboxOutline className="text-2xl text-green-500" />
+            <IoCheckboxOutline className="text-3xl text-green-500" />
           ) : (
-            <IoSquareOutline className="text-2xl text-gray-500" />
+            <IoSquareOutline className="text-3xl text-gray-500" />
           )}
         </div>
-        <div className="text-center sm:text-left">{todoOptimistic.description}</div>
+        <div className='grid sm:grid-cols-1'>
+          <div className="text-center font-bold sm:text-left">{todoOptimistic.title}</div>
+          <div className="text-center sm:text-left">{todoOptimistic.description}</div>
+        </div>
       </div>
     </div>
   )
