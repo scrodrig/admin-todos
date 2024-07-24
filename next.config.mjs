@@ -14,6 +14,10 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com',
         protocol: 'https',
       },
+      {
+        hostname: 'viniferavn.com',
+        protocol: 'https',
+      }
     ],
   },
   experimental: {
