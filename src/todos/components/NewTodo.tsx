@@ -14,7 +14,7 @@ export const NewTodo = () => {
     e.preventDefault()
     if (description.trim().length === 0) return
     await apiTodos.createTodo(description) //Rest API
-    // await addTodo(description, user.id) #TODO: implement this
+    // await addTodo(description) //#TODO: for server actions
     router.refresh()
     setDescription('')
     // return newTodo
@@ -44,7 +44,7 @@ export const NewTodo = () => {
       <span className="flex flex-1"></span>
 
       <button
-        onClick={() => deleteCompletedTodos()}
+        onClick={() => onDeleteCompletedTodos()}
         type="button"
         className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all">
         <IoTrashOutline />
