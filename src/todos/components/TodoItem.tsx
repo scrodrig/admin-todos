@@ -1,11 +1,11 @@
 'use client'
 
+import { IoCalendar, IoCalendarOutline, IoCheckboxOutline, IoSquareOutline } from 'react-icons/io5'
 import React, { startTransition } from 'react'
-import { Todo } from '@prisma/client'
-import { useOptimistic } from 'react'
 
+import { Todo } from '@prisma/client'
 import styles from './TodoItem.module.css'
-import { IoCheckboxOutline, IoSquareOutline } from 'react-icons/io5'
+import { useOptimistic } from 'react'
 
 interface TodoItemProps {
   todo: Todo
@@ -45,9 +45,15 @@ export const TodoItem = ({ todo, toggleTodo }: TodoItemProps) => {
             <IoSquareOutline className="text-3xl text-gray-500" />
           )}
         </div>
-        <div className='grid sm:grid-cols-1'>
+        <div className="grid sm:grid-cols-1">
           <div className="text-center font-bold sm:text-left">{todoOptimistic.title}</div>
           <div className="text-center sm:text-left">{todoOptimistic.description}</div>
+          <div className="text-center sm:text-left">
+            <div className='flex flex-col-2 items-center'>
+              <IoCalendarOutline className="text-gray-500 mr-1" />
+              {todoOptimistic.date}
+            </div>
+          </div>
         </div>
       </div>
     </div>
