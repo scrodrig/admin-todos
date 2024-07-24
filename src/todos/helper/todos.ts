@@ -22,12 +22,14 @@ export const updateTodo = async (id: string, completed: boolean): Promise<Todo> 
 interface UpdateTodo {
   title: string
   description: string
+  date?: string
 }
 
-export const createTodo = async ({ title, description }: UpdateTodo): Promise<Todo> => {
+export const createTodo = async ({ title, description, date }: UpdateTodo): Promise<Todo> => {
   const body = {
-    title: title,
+    title,
     description,
+    date
   }
 
   const todo = await fetch(`/api/todos/`, {
