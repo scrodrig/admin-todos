@@ -24,7 +24,7 @@ export const toggleTodo = async (id: string, completed: boolean): Promise<Todo> 
   return updatedTodo
 }
 
-export const addTodo = async (description: string, id:string): Promise<Todo | { message: string }> => {
+export const addTodo = async (description: string): Promise<Todo | { message: string }> => {
   const user = await getUserServerSession()
   if (!user) {
     throw new Error('Unauthorized')
@@ -47,9 +47,14 @@ export const addTodo = async (description: string, id:string): Promise<Todo | { 
 }
 
 export const deleteCompletedTodos = async (): Promise<void> => {
+  const user = await getUserServerSession()
+  if (!user) {
+    throw new Error('Unauthorized')
+  }
   await prisma.todo.deleteMany({
     where: {
       completed: true,
+      userId: user.id,
     },
   })
 
