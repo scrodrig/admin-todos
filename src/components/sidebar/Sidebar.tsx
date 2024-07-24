@@ -5,7 +5,6 @@ import { CiBookmarkCheck, CiLogout, CiShoppingBasket, CiUser, CiViewList } from 
 import SidebarItem from './SidebarItem'
 import { Avatar } from '../avatar/Avatar'
 import { LogoutButton } from './LogoutButton'
-import async from '../../app/dashboard/page'
 
 const menuItems = [
   {
@@ -50,7 +49,7 @@ export const Sidebar = async () => {
             <Image
               src="https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg"
               className="w-32"
-              alt="tailus logo"
+              alt="page logo"
               width={32}
               height={32}
             />
