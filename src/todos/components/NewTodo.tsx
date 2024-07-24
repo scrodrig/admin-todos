@@ -13,8 +13,9 @@ export const NewTodo = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (description.trim().length === 0) return
-    // const newTodo = await apiTodos.createTodo(description)
-    await addTodo(description)
+    await apiTodos.createTodo(description) //Rest API
+    // await addTodo(description, user.id) #TODO: implement this
+    router.refresh()
     setDescription('')
     // return newTodo
   }
