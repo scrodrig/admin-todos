@@ -30,6 +30,7 @@ const postSchema = yup.object({
   description: yup.string().required(),
   date: yup.string().required(),
   completed: yup.boolean().optional().default(false),
+  activities: yup.array().of(yup.string()).optional().default([]),
 })
 
 export async function POST(req: Request) {
@@ -39,11 +40,20 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { title, description, date, completed } = await postSchema.validate(await req.json())
+    const { title, description, date, completed, activities } = await postSchema.validate(
+      await req.json()
+    )
 
     const todo = await prisma.todo.create({
       data: {
-        ...{ title, description, date, completed, userId: user.id },
+        ...{
+          title,
+          description,
+          date,
+          completed,
+          userId: user.id,
+          activities: activities.filter((a) => a !== undefined),
+        },
       },
     })
 
