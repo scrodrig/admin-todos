@@ -3,5 +3,5 @@
 }
 
 .todoPending {
-  @apply bg-red-50 rounded-lg shadow-sm p-5 border-dashed border border-red-500 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0;
+  @apply bg-gray-50 rounded-lg shadow-sm p-5 border-dashed border border-gray-500 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0;
 }
