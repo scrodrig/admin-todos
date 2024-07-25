@@ -4,6 +4,7 @@ import { IoCalendar, IoCalendarOutline, IoCheckboxOutline, IoSquareOutline } fro
 import React, { startTransition } from 'react'
 
 import { Todo } from '@prisma/client'
+import { getIcon } from '@/activities/suggestions'
 import styles from './TodoItem.module.css'
 import { useOptimistic } from 'react'
 
@@ -46,13 +47,23 @@ export const TodoItem = ({ todo, toggleTodo }: TodoItemProps) => {
           )}
         </div>
         <div className="grid sm:grid-cols-1">
-          <div className="text-center font-bold sm:text-left">{todoOptimistic.title}</div>
+          <div className="text-center font-bold sm:text-left sm:text-xl text-gray-500">
+            {todoOptimistic.title}
+          </div>
           <div className="text-center sm:text-left">{todoOptimistic.description}</div>
           <div className="text-center sm:text-left">
-            <div className='flex flex-col-2 items-center'>
-              <IoCalendarOutline className="text-gray-500 mr-1" />
+            <div className="flex flex-col-2 items-center">
+              <IoCalendarOutline className="text-gray-500 mr-2" />
               {todoOptimistic.date}
             </div>
+          </div>
+          <div className="grid sm:grid-cols-2 sm:text-left mt-3">
+            {todoOptimistic.activities.map((activity) => (
+              <div key={activity} className="flex items-center">
+                <span className="mr-2">{getIcon(activity)?.icon}</span>
+                <span className={`${getIcon(activity)?.tag} rounded pr-1 pl-1`}>{activity}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
