@@ -4,7 +4,9 @@ import * as apiTodos from '@/todos/helper/todos'
 
 import { CiSaveDown1, CiSaveUp1 } from 'react-icons/ci'
 import { FormEvent, useState } from 'react'
+import { Suggestion, suggestions as suggestionsList } from '@/activities/suggestions'
 
+import { Checkbox } from './Checkbox'
 import { IoMdClose } from 'react-icons/io'
 import { IoTrashOutline } from 'react-icons/io5'
 import { useRouter } from 'next/navigation'
@@ -19,17 +21,45 @@ export const NewTodo = () => {
   const [date, setDate] = useState(today)
   const [showNewTodoForm, setShowNewTodoForm] = useState(false)
 
+  const [suggestions, setSuggestionList] = useState(suggestionsList())
+
+  const handleChange = (sug: Suggestion) => {
+    const updatedSuggestions = suggestions.map((suggestion) => {
+      if (suggestion.label === sug.label) {
+        return { ...suggestion, value: !sug.value }
+      }
+      return suggestion
+    })
+    setSuggestionList(updatedSuggestions)
+  }
+
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (description.trim().length === 0) return
-    await apiTodos.createTodo({ title, description, date }) //Rest API
+
+    const selectedSuggestions = suggestions
+      .filter((suggestion) => suggestion.value)
+      .map((suggestion) => suggestion.label)
+
+    console.log('selectedSuggestions', selectedSuggestions)
+
+    await apiTodos.createTodo({ title, description, date, activities: selectedSuggestions }) //Rest API
     // await addTodo(description) //#TODO: for server actions
     router.refresh()
     setDescription('')
     setTitle('')
     setDate(today)
     setShowNewTodoForm(false)
+    setSuggestionList(suggestionsList())
     // return newTodo
+  }
+
+  const onClose = () => {
+    setDescription('')
+    setTitle('')
+    setDate(today)
+    setShowNewTodoForm(false)
+    setSuggestionList(suggestionsList())
   }
 
   const onDeleteCompletedTodos = async () => {
@@ -47,7 +77,7 @@ export const NewTodo = () => {
           </h2>
           <div
             className="flex w-1/12 items-end justify-end mr-5 mt-5 text-gray-500"
-            onClick={() => setShowNewTodoForm(false)}>
+            onClick={() => onClose()}>
             <IoMdClose size={50} />
           </div>
         </div>
@@ -77,6 +107,19 @@ export const NewTodo = () => {
           max={maxDate}
         />
 
+        <div className="flex flex-col ml-10 mr-10 mt-5 pl-3 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-sky-500 transition-all">
+          {suggestions.map((suggestion) => (
+            <Checkbox
+              key={suggestion.label}
+              label={suggestion.label}
+              value={suggestion.value}
+              onChange={() => {
+                handleChange(suggestion)
+              }}
+            />
+          ))}
+        </div>
+
         <div className="flex flex-col-2 items-center justify-center mt-8 mb-5">
           <button
             type="submit"
@@ -86,7 +129,7 @@ export const NewTodo = () => {
           </button>
 
           <button
-            onClick={() => setShowNewTodoForm(false)}
+            onClick={() => onClose()}
             type="button"
             className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all">
             <IoMdClose />
