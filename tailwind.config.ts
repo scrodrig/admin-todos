@@ -8,6 +8,7 @@ const config: Config = {
     './src/todos/**/*.{js,ts,jsx,tsx,mdx}',
     './src/products/**/*.{js,ts,jsx,tsx,mdx}',
     './src/shopping-cart/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/activities/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
