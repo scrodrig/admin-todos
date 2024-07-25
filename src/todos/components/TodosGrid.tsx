@@ -1,11 +1,12 @@
 'use client'
 
-import { Todo } from '@prisma/client'
-import React from 'react'
-import { TodoItem } from './TodoItem'
 import * as todosApi from '@/todos/helper/todos'
-import { useRouter } from 'next/navigation'
+
+import React from 'react'
+import { Todo } from '@prisma/client'
+import { TodoItem } from './TodoItem'
 import { toggleTodo } from '../actions/todo-actions'
+import { useRouter } from 'next/navigation'
 
 interface TodosGridProps {
   todos?: Todo[]
@@ -22,7 +23,7 @@ export const TodosGrid = ({ todos = [] }: TodosGridProps) => {
   // }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-2">
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
       ))}
