@@ -38,7 +38,7 @@ export const TodoItem = ({ todo, toggleTodo }: TodoItemProps) => {
           // onClick={() => toggleTodo(todoOptimistic.id, !todoOptimistic.completed)}
           onClick={() => onToggleTodo()}
           className={`flex p-2 rounded-me cursor-pointer hover:bg-opacity-60 ${
-            todoOptimistic.completed ? 'bg-blue-100' : 'bg-red-100'
+            todoOptimistic.completed ? 'bg-blue-100' : 'bg-gray-100'
           }`}>
           {todoOptimistic.completed ? (
             <IoCheckboxOutline className="text-3xl text-green-500" />
