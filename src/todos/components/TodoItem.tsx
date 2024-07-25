@@ -57,7 +57,7 @@ export const TodoItem = ({ todo, toggleTodo }: TodoItemProps) => {
               {todoOptimistic.date}
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 sm:text-left mt-3">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 md:grid-cols-1 sm:text-left mt-3">
             {todoOptimistic.activities.map((activity) => (
               <div key={activity} className="flex items-center">
                 <span className="mr-2">{getIcon(activity)?.icon}</span>
