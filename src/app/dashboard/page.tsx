@@ -3,13 +3,7 @@ import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import Image from 'next/image'
-import { CiCircleCheck, CiSquareRemove, CiUser } from 'react-icons/ci'
-
-const roles: { [key: string]: JSX.Element } = {
-  admin: <CiCircleCheck size={30} />,
-  user: <CiUser size={30} />,
-  client: <CiSquareRemove size={30} />,
-}
+import { roles } from '@/auth'
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions)
