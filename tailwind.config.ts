@@ -10,6 +10,7 @@ const config: Config = {
     './src/shopping-cart/**/*.{js,ts,jsx,tsx,mdx}',
     './src/activities/**/*.{js,ts,jsx,tsx,mdx}',
     './src/cookies/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/charts/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
