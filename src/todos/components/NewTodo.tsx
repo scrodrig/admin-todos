@@ -108,16 +108,18 @@ export const NewTodo = () => {
         />
 
         <div className="flex flex-col ml-10 mr-10 mt-5 pl-3 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-sky-500 transition-all">
-          {suggestions.map((suggestion) => (
-            <Checkbox
-              key={suggestion.label}
-              label={suggestion.label}
-              value={suggestion.value}
-              onChange={() => {
-                handleChange(suggestion)
-              }}
-            />
-          ))}
+          <div className="grid sm:grid-cols-2 sm:text-left mt-3">
+            {suggestions.map((suggestion) => (
+              <Checkbox
+                key={suggestion.label}
+                label={suggestion.label}
+                value={suggestion.value}
+                onChange={() => {
+                  handleChange(suggestion)
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col-2 items-center justify-center mt-8 mb-5">
