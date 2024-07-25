@@ -1,6 +1,6 @@
 import { MdFamilyRestroom, MdOutlineHealthAndSafety } from 'react-icons/md'
 
-import { BsPersonWorkspace } from 'react-icons/bs'
+import { BsClipboardMinus, BsPersonWorkspace } from 'react-icons/bs'
 import { CiShoppingCart } from 'react-icons/ci'
 import { FaHome } from 'react-icons/fa'
 import { FaPerson } from 'react-icons/fa6'
@@ -18,7 +18,7 @@ interface Iconography
   { [key: string]: IconographyItem }
 
 
-const suggestedActivities = ['Work', 'Personal', 'Shopping', 'Health', 'Family', 'Friends', 'Home']
+const suggestedActivities = ['Work', 'Personal', 'Shopping', 'Health', 'Family', 'Friends', 'Home', 'Others']
 
 export const suggestions = (activities?: string[]): Suggestion[] => {
   let finalSuggestions: Suggestion[] = []
@@ -45,6 +45,7 @@ export const getIcon = (key: string): IconographyItem => {
     Health: { icon: <MdOutlineHealthAndSafety />, tag: 'bg-orange-200' },
     Family: { icon: <MdFamilyRestroom />, tag: 'bg-gray-200' },
     Friends: { icon: <GiThreeFriends />, tag: 'bg-yellow-200' },
+    Others: { icon: <BsClipboardMinus />, tag: 'bg-zinc-200' },
     Home: { icon: <FaHome />, tag: 'bg-purple-200' },
   }
   return icons[key] ?? icons['Work']
