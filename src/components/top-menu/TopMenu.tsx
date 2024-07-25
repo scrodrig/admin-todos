@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { CiChat1, CiMenuBurger, CiSearch, CiShoppingBasket } from 'react-icons/ci'
 
 const getTotalCount = (cart: { [id: string]: number }): number => {
