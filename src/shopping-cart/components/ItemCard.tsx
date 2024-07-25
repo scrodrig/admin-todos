@@ -1,11 +1,10 @@
 'use client';
 
-import type { Product } from "@/products/data/products"
-import Image from "next/image";
-
 import { IoAddCircleOutline, IoRemove } from "react-icons/io5";
 import { addProductToCart, removeSingleItemFromCart } from "../actions/actions";
 
+import Image from "next/image";
+import type { Product } from "@/products/data/products"
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -62,16 +61,16 @@ export const ItemCard = ({ product, quantity }: Props) => {
       </div>
 
       <div className="flex p-5 items-center justify-center">
+      <button
+          onClick={onRemoveItem}
+          className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+            <IoRemove size={25} />
+        </button>
+        <span className="text-2xl text-white mx-10">{quantity}</span>
         <button
           onClick={ onAddToCart }
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             <IoAddCircleOutline size={25} />
-        </button>
-        <span className="text-2xl text-white mx-10">{quantity}</span>
-        <button
-          onClick={onRemoveItem}
-          className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-            <IoRemove size={25} />
         </button>
       </div>
     </div>
