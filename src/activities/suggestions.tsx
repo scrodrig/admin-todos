@@ -12,13 +12,25 @@ export interface Suggestion {
   value: boolean
 }
 
-interface IconographyItem { icon: React.JSX.Element; tag: string }
+interface IconographyItem {
+  icon: React.JSX.Element
+  tag: string
+}
 
-interface Iconography 
-  { [key: string]: IconographyItem }
+interface Iconography {
+  [key: string]: IconographyItem
+}
 
-
-const suggestedActivities = ['Work', 'Personal', 'Shopping', 'Health', 'Family', 'Friends', 'Home', 'Others']
+const suggestedActivities = [
+  'Work',
+  'Personal',
+  'Shopping',
+  'Health',
+  'Family',
+  'Friends',
+  'Home',
+  'Others',
+]
 
 export const suggestions = (activities?: string[]): Suggestion[] => {
   let finalSuggestions: Suggestion[] = []
@@ -35,6 +47,10 @@ export const suggestions = (activities?: string[]): Suggestion[] => {
   }
 
   return finalSuggestions
+}
+
+export const activeSuggestions = (suggestions: Suggestion[]): string[] => {
+  return suggestions.filter((suggestion) => suggestion.value).map((suggestion) => suggestion.label)
 }
 
 export const getIcon = (key: string): IconographyItem => {
