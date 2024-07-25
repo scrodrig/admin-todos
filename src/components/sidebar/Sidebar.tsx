@@ -1,7 +1,7 @@
 import { CiBookmarkCheck, CiShoppingBasket, CiUser } from 'react-icons/ci'
 
 import { Avatar } from '../avatar/Avatar'
-import { FaCookieBite } from 'react-icons/fa'
+import { FaChartBar, FaCookieBite } from 'react-icons/fa'
 import Image from 'next/image'
 import { IoServer } from 'react-icons/io5'
 import Link from 'next/link'
@@ -41,6 +41,12 @@ const menuItems = [
     path: '/dashboard/profile',
     icon: <CiUser size={30} />,
     title: 'Profile',
+  },
+
+  {
+    path: '/dashboard/charts',
+    icon: <FaChartBar size={30} />,
+    title: 'Charts',
   },
 ]
 
