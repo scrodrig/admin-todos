@@ -9,6 +9,7 @@ const config: Config = {
     './src/products/**/*.{js,ts,jsx,tsx,mdx}',
     './src/shopping-cart/**/*.{js,ts,jsx,tsx,mdx}',
     './src/activities/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/cookies/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
