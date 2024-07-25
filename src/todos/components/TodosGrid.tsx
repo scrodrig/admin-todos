@@ -1,19 +1,17 @@
-'use client'
-
-import * as todosApi from '@/todos/helper/todos'
+// 'use client'
 
 import React from 'react'
 import { Todo } from '@prisma/client'
 import { TodoItem } from './TodoItem'
 import { toggleTodo } from '../actions/todo-actions'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 
 interface TodosGridProps {
   todos?: Todo[]
 }
 
 export const TodosGrid = ({ todos = [] }: TodosGridProps) => {
-  const router = useRouter()
+  // const router = useRouter()
 
   //! Not needed for actions
   // const toggleTodo = async (id: string, completed: boolean) => {
