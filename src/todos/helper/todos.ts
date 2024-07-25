@@ -22,11 +22,16 @@ export const updateTodo = async (id: string, completed: boolean): Promise<Todo> 
 interface UpdateTodo {
   title: string
   description: string
-  date?: string,
+  date?: string
   activities?: string[]
 }
 
-export const createTodo = async ({ title, description, date, activities }: UpdateTodo): Promise<Todo> => {
+export const createTodo = async ({
+  title,
+  description,
+  date,
+  activities,
+}: UpdateTodo): Promise<Todo> => {
   const body = {
     title,
     description,
@@ -54,4 +59,14 @@ export const deleteCompletedTodos = async () => {
   }).then((res) => res.json())
 
   return { deleted: true }
+}
+
+export const getTotalTodos = async () => {
+  const counter = await fetch(`/api/counters/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => res.json())
+  return counter
 }
