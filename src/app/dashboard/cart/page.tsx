@@ -1,6 +1,7 @@
-import { WidgetItem } from '@/components'
 import { Product, products } from '@/products/data/products'
+
 import { ItemCard } from '@/shopping-cart'
+import { WidgetItem } from '@/components'
 import { cookies } from 'next/headers'
 
 export const metadata = {
@@ -48,10 +49,10 @@ export default function CartPage() {
         </div>
         <div className="flex flex-col w-full sm:w-4/12">
           <WidgetItem title="Total">
-            <div className="mt-2 flex justify-center gap-4">
+            <div className="mt-2 flex flex-col justify-center gap-4 items-center">
               <h3 className="text-3xl font-bold text-gray-700">${totalToPay.toFixed(2)}</h3>
               <span className="font-bold text-center text-gray-500">
-                Taxes 15%: $ {(totalToPay * 1.15).toFixed(2)}
+                Taxes 23%: $ {(totalToPay * 1.23).toFixed(2)}
               </span>
             </div>
           </WidgetItem>
