@@ -8,12 +8,12 @@ import { IoTrashOutline } from 'react-icons/io5'
 import { useRouter } from 'next/navigation'
 import { useNewTodo } from '../hooks/useNewTodo'
 import { NewTodoForm } from './NewTodoForm'
+import { activeSuggestions } from '@/activities/suggestions'
 
 // import { addTodo, deleteCompletedTodos } from '../actions/todo-actions'
 
 export const NewTodo = () => {
   const router = useRouter()
-  const today = new Date().toISOString().split('T')[0]
   const {
     description: { description, setDescription },
     title: { title, setTitle },
@@ -28,9 +28,7 @@ export const NewTodo = () => {
     e.preventDefault()
     if (description.trim().length === 0) return
 
-    const selectedSuggestions = suggestions
-      .filter((suggestion) => suggestion.value)
-      .map((suggestion) => suggestion.label)
+    const selectedSuggestions = activeSuggestions(suggestions)
 
     await apiTodos.createTodo({ title, description, date, activities: selectedSuggestions }) //Rest API
     // await addTodo(description) //#TODO: for server actions
