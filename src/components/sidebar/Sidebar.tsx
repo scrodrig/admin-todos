@@ -1,15 +1,19 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { CiBookmarkCheck, CiLogout, CiShoppingBasket, CiUser, CiViewList } from 'react-icons/ci'
-import SidebarItem from './SidebarItem'
+import { CiBookmarkCheck, CiShoppingBasket, CiUser } from 'react-icons/ci'
+
 import { Avatar } from '../avatar/Avatar'
+import { FaCookieBite } from 'react-icons/fa'
+import Image from 'next/image'
+import { IoServer } from 'react-icons/io5'
+import Link from 'next/link'
 import { LogoutButton } from './LogoutButton'
+import { MdDashboardCustomize } from 'react-icons/md'
+import React from 'react'
+import SidebarItem from './SidebarItem'
 
 const menuItems = [
   {
     path: '/dashboard',
-    icon: <CiBookmarkCheck size={30} />,
+    icon: <MdDashboardCustomize  size={30} />,
     title: 'Dashboard',
   },
   {
@@ -19,12 +23,12 @@ const menuItems = [
   },
   {
     path: '/dashboard/server-todos',
-    icon: <CiViewList size={30} />,
+    icon: <IoServer  size={30} />,
     title: 'Server actions',
   },
   {
     path: '/dashboard/cookies',
-    icon: <CiViewList size={30} />,
+    icon: <FaCookieBite  size={30} />,
     title: 'Cookies',
   },
   {
