@@ -32,7 +32,7 @@ export const addTodo = async (description: string): Promise<Todo | { message: st
   try {
     const todo = await prisma.todo.create({
       data: {
-        ...{ description, userId: user.id },
+        ...{ description, userId: user.id, title: '' },
       },
     })
 
