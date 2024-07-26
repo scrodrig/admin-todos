@@ -16,23 +16,24 @@ export default async function ChartPage() {
   //   return { total }
   // }
 
-  const pending = await prisma.todo.count({
-    where: {
-      userId: user.id,
-      completed: false,
-    },
-  })
-
-  const done = await prisma.todo.count({
-    where: {
-      userId: user.id,
-      completed: true,
-    },
-  })
+  const [pending, done] = await prisma.$transaction([
+    prisma.todo.count({
+      where: {
+        userId: user.id,
+        completed: false,
+      },
+    }),
+    prisma.todo.count({
+      where: {
+        userId: user.id,
+        completed: true,
+      },
+    }),
+  ])
 
   return (
     <div>
-      <h1>Chart Page</h1>
+      <h1 className='text-3xl'>Chart Page</h1>
       <div>
         <Donut done={done} pending={pending} />
       </div>
