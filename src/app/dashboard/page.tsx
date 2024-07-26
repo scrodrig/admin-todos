@@ -1,7 +1,7 @@
 import { Avatar, WidgetItem } from '@/components'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/authOptions'
 import Image from 'next/image'
 import { roles } from '@/auth'
 
